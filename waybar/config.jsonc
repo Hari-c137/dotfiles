@@ -1,0 +1,103 @@
+{
+    "layer": "top",
+    "spacing": 0,
+    "height": 0,
+
+    "margin-top": 4,
+    "margin-right": 4,
+    "margin-bottom": 0,
+    "margin-left": 4,
+
+    "modules-left": [
+        "sway/workspaces"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "tray",
+        "cpu",
+        "custom/wayves",
+        "memory",
+        "network",
+        "pulseaudio"
+    ],
+
+    "sway1/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "tooltip": false
+    },
+
+    "tray": {
+        "spacing": 10,
+        "tooltip": false
+    },
+
+    "clock": {
+        "format": "{:%I:%M %p - %a, %d %b %Y}",
+        "tooltip": false
+    },
+
+    "cpu": {
+        "format": "cpu {usage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 90
+        }
+    },
+
+    "custom/wayves": {
+    "format": "{}",
+    "exec": "python /home/x137/.config/cava/wayves/wayves.py -o cava -i cava -a cava"
+    },
+
+
+    "memory": {
+        "format": "mem {percentage}%",
+        "interval": 2,
+
+        "states": {
+            "critical": 80
+        }
+    },
+
+    "sway/workspaces": {
+  "format": "{icon}",
+  "on-click": "activate",
+  "format-icons": {
+    "1": "一",
+    "2": "二",
+    "3": "三",
+    "4": "四",
+    "5": "五",
+    "6": "六",
+    "7": "七",
+    "8": "八",
+    "9": "九",
+    "10": "十"
+},
+  "sort-by-number": true
+},
+
+    "network": {
+        "format-wifi" : "wifi {bandwidthDownBytes}",
+        "format-ethernet": "enth {bandwidthDownBytes}",
+        "format-disconnected" : "no network",
+        "interval": 5,
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5,
+        "max-volume": 150,
+        "format": "vol {volume}%",
+        "format-bluetooth": "vol {volume}%",
+        "nospacing": 1,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    }
+}
