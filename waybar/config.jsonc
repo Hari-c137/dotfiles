@@ -19,7 +19,7 @@
     "modules-right": [
         "tray",
         "cpu",
-        "custom/wayves",
+ //       "custom/wayves",
         "memory",
         "network",
         "pulseaudio"
@@ -50,10 +50,10 @@
         }
     },
 
-    "custom/wayves": {
-    "format": "{}",
-    "exec": "python /home/x137/.config/cava/wayves/wayves.py -o cava -i cava -a cava"
-    },
+ //   "custom/wayves": {
+ //   "format": "{}",
+ //   "exec": "python /home/x137/.config/cava/wayves/wayves.py -o cava -i cava -a cava"
+ //  },
 
 
     "memory": {

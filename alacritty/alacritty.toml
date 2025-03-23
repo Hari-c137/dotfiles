@@ -1,0 +1,46 @@
+[terminal.shell]
+args = ['--login']
+program = "/usr/bin/fish"
+
+[cursor]
+style = "Beam"
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "iosevka"
+
+[window]
+startup_mode = "Windowed"
+dynamic_padding = true
+opacity = 1.0
+
+[window.padding]
+x = 6
+y = 0
+
+#[window.dimensions]
+#columns = 90
+#lines = 25
+
+[colors.normal]
+black = "#282828"  # Gruvbox dark gray
+red = "#fb4934"    # Gruvbox red
+green = "#b8bb26"  # Gruvbox green
+yellow = "#fabd2f" # Gruvbox yellow
+blue = "#83a598"   # Gruvbox blue
+magenta = "#d3869b" # Gruvbox magenta
+cyan = "#8ec07c"   # Gruvbox cyan
+white = "#ebdbb2"  # Gruvbox light gray
+
+[colors.primary]
+background = "#1d2021"  # Gruvbox dark background
+foreground = "#ebdbb2"  # Gruvbox light foreground
+
+[colors.cursor]
+text = "CellBackground"
+cursor = "CellForeground"
+
+[terminal]
+

@@ -14,14 +14,14 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term foot
 set $editor $HOME/Downloads/neovide.AppImage
 # Your preferred application launcher
 set $menu tofi-drun | xargs swaymsg exec --
-
+set $browser firefox-wayland
 # random_wallpaper Variables
 
-set $switch bash ~/code/clever_shit/random_wallpaper.sh
+set $switch bash ~/code/dumb_shit/random_wallpaper.sh
 
 ### Output configuration
 #
@@ -70,6 +70,10 @@ exec /usr/libexec/polkit-gnome-authentication-agent-1
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+
+    # start browser
+  
+    bindsym $mod+Shift+f exec $browser
 
     # Kill focused window
     bindsym $mod+Shift+q kill
