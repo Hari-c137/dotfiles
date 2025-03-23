@@ -22,7 +22,7 @@ set $browser firefox-wayland
 # random_wallpaper Variables
 
 set $switch bash ~/code/dumb_shit/random_wallpaper.sh
-
+set $copy_key bash ~/code/dumb_shit/copy_key.sh
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -83,7 +83,11 @@ exec /usr/libexec/polkit-gnome-authentication-agent-1
 
     # random wallpaper switcher
     
-    bindsym $mod+Shift+w exec $switch 
+    bindsym $mod+Shift+w exec $switch
+
+    # copy key using wl-copy for frequent use
+
+    bindsym $mod+Shift+b exec $copy_key
 
     # start neovide text-editor
     
