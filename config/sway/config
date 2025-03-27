@@ -11,7 +11,7 @@ set $browser firefox-wayland
 
 set $switch bash ~/code/dumb_shit/random_wallpaper.sh
 set $copy_key bash ~/code/dumb_shit/copy_key.sh
-output * bg $HOME/pics/1.png fill
+output * bg $HOME/pics/1 fill
 
 exec swayidle -w \
           timeout 300 'swaylock -f -c 000000' \
