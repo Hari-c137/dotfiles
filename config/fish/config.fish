@@ -8,5 +8,5 @@ alias exti=exit
 alias gs='git status'
 alias ivs=vis
 
-$HOME/code/dumb_shit/custom_fetch.sh
+$HOME/code/dumb_shit/bash/custom_fetch.sh
 set fish_greeting
