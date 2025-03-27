@@ -1,17 +1,19 @@
 set $mod Mod4
-
 set $left h
 set $down j
 set $up k
 set $right l
 set $term foot
-set $editor $HOME/Downloads/neovide.AppImage
 set $menu tofi-drun | xargs swaymsg exec --
 set $browser firefox-wayland
 
-set $switch bash ~/code/dumb_shit/random_wallpaper.sh
-set $copy_key bash ~/code/dumb_shit/copy_key.sh
+
+
+set $switch bash ~/code/dumb_shit/bash/random_wallpaper.sh
+set $copy_key bash ~/code/dumb_shit/bash/copy_key.sh
 output * bg $HOME/pics/1 fill
+
+
 
 exec swayidle -w \
           timeout 300 'swaylock -f -c 000000' \
@@ -22,23 +24,12 @@ exec /usr/libexec/polkit-gnome-authentication-agent-1
 
 
     bindsym $mod+Return exec $term
-
-  
     bindsym $mod+Shift+f exec $browser
-
     bindsym $mod+Shift+q kill
-
     bindsym $mod+d exec $menu
-
-    
     bindsym $mod+Shift+w exec $switch
-
-
     bindsym $mod+Shift+b exec $copy_key
-
     
-    bindsym $mod+n exec $editor
-
 
     floating_modifier $mod normal
 
