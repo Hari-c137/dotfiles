@@ -1,0 +1,31 @@
+bar:
+  height: 26
+  location: bottom
+  background: 000000ff
+
+  font: Iosevka:pixelsize=15
+
+  right:
+    - clock:
+        content:
+          - string: {text: time , font: "Font Awesome 6 Free:style=solid:size=12"}
+          - string: {text: "{date}", right-margin: 5}
+          - string: {text: date , font: "Font Awesome 6 Free:style=solid:size=12"}
+          - string: {text: "{time}"}
+
+  left:
+    - dwl:
+        number-of-tags: 6
+        dwl-info-filename: "~/.cache/dwl_info"
+        name-of-tags: ["home  ", "dev  ", "mpv  ", "work  ", "college  ", "web  "]
+        content:
+          list:
+            items:
+              - map:
+                  conditions:
+                    # default tag
+                    id == 0: {string: {text: "{layout} {title}"}}
+
+                    selected: {string: {text: "-> {name}"}}
+                    ~empty: {string: {text: "{name}"}}
+                    urgent: {string: {text: "=> {name} <="}}
