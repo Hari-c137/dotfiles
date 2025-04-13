@@ -6,18 +6,29 @@ bar:
   font: Iosevka:pixelsize=15
 
   right:
+    - mem:
+        poll-interval: 2500
+        content:
+          string: {text: "mem:{used:mb}MB  "}
+    - cpu:
+        poll-interval: 2500
+        content:
+          map:
+            conditions:
+              id < 0:
+                - string: {text: "cpu:"}
+                - string: {text: "{cpu}%  "}
     - clock:
         content:
-          - string: {text: time , font: "Font Awesome 6 Free:style=solid:size=12"}
-          - string: {text: "{date}", right-margin: 5}
-          - string: {text: date , font: "Font Awesome 6 Free:style=solid:size=12"}
-          - string: {text: "{time}"}
-
+          - string: {text: "{date} ", right-margin: 5}
+          - string: {text: "time:"}
+          - string: {text: "{time} "}
   left:
     - dwl:
-        number-of-tags: 6
+        number-of-tags: 5
         dwl-info-filename: "~/.cache/dwl_info"
-        name-of-tags: ["home  ", "dev  ", "mpv  ", "work  ", "college  ", "web  "]
+        #name-of-tags: [ "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   "]
+        name-of-tags: ["home  ", "dev  ", "mpv  ", "work  ", "web  "]
         content:
           list:
             items:
@@ -29,3 +40,4 @@ bar:
                     selected: {string: {text: "-> {name}"}}
                     ~empty: {string: {text: "{name}"}}
                     urgent: {string: {text: "=> {name} <="}}
+
