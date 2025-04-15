@@ -1,7 +1,8 @@
 bar:
   height: 26
   location: bottom
-  background: 000000ff
+  foreground: ffffffff
+  background: 00000088
 
   font: Iosevka:pixelsize=15
 
