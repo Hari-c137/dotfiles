@@ -1,8 +1,8 @@
 # dotfiles and wallpapers for Void Linux
 ## Features
-- OS: Void Linux (glibc)
-- Windows Manager: swayfx w/ autotiling-rs
-- Status Bar: swaybar + i3status-rust
+- Operating_System: Void Linux (glibc)
+- Wayland_Compositor: swayfx w/ autotiling-rs
+- Status_Bar: swaybar + i3status-rust
 - Launcher: fuzzel
 - Shell: fish
 - Terminal: foot (footclient/server)
