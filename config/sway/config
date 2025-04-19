@@ -1,42 +1,52 @@
+# devices
+
+input * {
+      dwt enabled
+      tap enabled
+      natural_scroll disabled
+      middle_emulation enabled
+      repeat_rate 100
+      repeat_delay 250
+}
+
+# constants
+
 set $mod Mod4
 set $left h
 set $down j
 set $up k
 set $right l
-set $term foot
-set $menu tofi-drun | xargs swaymsg exec --
+set $term footclient
+set $menu fuzzel
+set $browser flatpak run app.zen_browser.zen
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term footclient
+set $menu fuzzel | xargs swaymsg exec --
 set $browser firefox-wayland
+
 
 
 set $file_select bash ~/code/dumb_shit/file_select.sh
 set $switch bash ~/code/dumb_shit/bash/random_wallpaper.sh
 set $copy_key bash ~/code/dumb_shit/bash/copy_key.sh
-output * bg $HOME/pics/1 fill
 
-
-
-exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f -c 000000'
-
-exec /usr/libexec/polkit-gnome-authentication-agent-1
-
+# shortcuts
 
     bindsym $mod+Return exec $term
-    bindsym $mod+Shift+f exec $browser
-    bindsym $mod+Shift+q kill
+    bindsym $mod+f exec $browser
+    bindsym $mod+c kill
     bindsym $mod+d exec $menu
     bindsym $mod+Shift+w exec $switch
     bindsym $mod+Shift+b exec $copy_key
     bindsym $mod+Shift+s exec $file_select   
 
     floating_modifier $mod normal
-
     bindsym $mod+Shift+c reload
-
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
@@ -83,7 +93,7 @@ exec /usr/libexec/polkit-gnome-authentication-agent-1
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
-    bindsym $mod+f fullscreen
+    bindsym $mod+Shift+f fullscreen
 
     bindsym $mod+Shift+space floating toggle
 
@@ -94,6 +104,8 @@ exec /usr/libexec/polkit-gnome-authentication-agent-1
     bindsym $mod+Shift+minus move scratchpad
 
     bindsym $mod+minus scratchpad show
+
+    # bindsym $mod+l exec ~/.config/sway/scripts/lock.sh
 
 
 mode "resize" {
@@ -124,21 +136,58 @@ bindsym $mod+r mode "resize"
     bindsym Print exec grim
 
 
-exec pipewire
-exec swaync
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec_always autotiling
 
-bar {
+# design
 
-swaybar_command waybar
 
-}
-
+output * bg $HOME/pics/1 fill
 default_border none
 default_floating_border none
 titlebar_padding 1
 titlebar_border_thickness 0
 gaps inner 10
 
-include /etc/sway/config.d/*
+
+
+bar {
+    position bottom
+ #    status_command while ~/.config/sway/status.sh; do sleep 5; done
+      status_command i3status-rs ~/.config/i3status-rust/config.toml
+
+
+    colors {
+        height 24
+        statusline #AAAAAA
+        background #000000
+	focused_workspace #00000033 #00000033 #FFFFFF
+	active_workspace #00000033 #00000033 #AAAAAA
+	inactive_workspace #00000033 #00000033 #999999
+	urgent_workspace #00000033 #00000033 #FF0000
+    }
+    font "Iosevka" 13
+}
+
+# misc
+
+xwayland disabled
+
+# autostart
+
+
+exec pipewire &
+exec swaync &
+exec autotiling-rs &
+exec foot -s &
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+exec swayidle -w \
+          timeout 300 'swaylock -f -c 000000' \
+          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          before-sleep 'swaylock -f -c 000000'
+
+exec /usr/libexec/polkit-gnome-authentication-agent-1
+
+exec /usr/libexec/xdg-desktop-portal-wlr -r
+exec sleep 1 && /usr/libexec/xdg-desktop-portal -r
+
+include $HOME/.config/sway/config.d/swayfx
